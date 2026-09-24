@@ -1,0 +1,13 @@
+{%- set croutonsTrail = collections.note | croutons(page.url, pluginSettings.homeLabel) -%}
+{%- if croutonsTrail.length > 0 -%}
+<nav class="croutons" aria-label="Breadcrumb">
+  <ol>
+    {%- for crouton in croutonsTrail %}
+    <li class="crouton crouton--{{ 'link' if crouton.url else 'plain' }}">
+      {%- if crouton.url -%}<a href="{{ crouton.url }}">{{ crouton.label | escape }}</a>{%- else -%}{{ crouton.label | escape }}{%- endif -%}
+      {%- if not loop.last -%}<span class="crouton-sep" aria-hidden="true">{{ pluginSettings.separator | escape }}</span>{%- endif -%}
+    </li>
+    {%- endfor %}
+  </ol>
+</nav>
+{%- endif -%}

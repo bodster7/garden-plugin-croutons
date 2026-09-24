@@ -1,0 +1,42 @@
+// Linked and plain croutons look the same by default (matching upstream
+// Breadcrumbs). Themes can target .crouton--link / .crouton--plain.
+.croutons {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin-bottom: 4px;
+
+  ol {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .crouton {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+
+    &::before {
+      content: none;
+    }
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .crouton-sep {
+    opacity: 0.5;
+  }
+}

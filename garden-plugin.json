@@ -1,0 +1,29 @@
+{
+  "id": "croutons",
+  "name": "Croutons",
+  "version": "0.1.0",
+  "description": "Folder trail under the note title, with folder croutons linking to folder index pages.",
+  "author": "Ian",
+  "hooks": "index.js",
+  "slots": {
+    "notes.header": "templates/trail.njk"
+  },
+  "styles": ["styles/croutons.scss"],
+  "settings": [
+    {
+      "key": "homeLabel",
+      "name": "Home label",
+      "description": "First crouton, linking to the home page. Leave empty to hide it.",
+      "type": "text",
+      "default": "Home",
+      "env": "CROUTONS_HOME_LABEL"
+    },
+    {
+      "key": "separator",
+      "name": "Separator",
+      "type": "text",
+      "default": "/",
+      "env": "CROUTONS_SEPARATOR"
+    }
+  ]
+}
