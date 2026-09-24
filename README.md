@@ -55,7 +55,7 @@ Linked and plain croutons look the same by default. Target `.crouton--link` or `
 
 Install from this repo's URL, or copy the folder to `src/plugins/croutons/` in your garden. **Disable the Breadcrumbs plugin first**, or you'll get two trails.
 
-If a note has a `dg-permalink` that isn't under its folder's URL, the build log shows one `[plugins] croutons:` line for it. Its trail still links correctly.
+Notes with a `dg-permalink` outside their folder (like `/about/`) still get a correct trail through their folders.
 
 ## Credit
 

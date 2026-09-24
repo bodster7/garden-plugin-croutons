@@ -147,15 +147,16 @@ if croutons is empty: render nothing                     # no croutons, no <nav>
 | `Projects/Meshcore/Some plans.md` | Home / Projects🔗 / Meshcore🔗 |
 | `Projects/Meshcore/Meshcore - README.md` (the Meshcore index) | Home / Projects🔗 (own folder dropped, since the title is right below) |
 | `Musings/20260916 2153.md` (no `/musings/` page) | Home / Musings (plain) |
-| Note with a custom `dg-permalink` not under its folder's URL, e.g. `Projects/Meshcore/Roadmap.md` → `/meshcore-roadmap/` | Folder croutons still resolve through `folderUrls`, so links stay correct. Emit one `[plugins]` warning naming the note, so the author knows its URL doesn't follow its folders. |
+| Note with a custom `dg-permalink` not under its folder's URL, e.g. `Projects/Meshcore/Roadmap.md` → `/meshcore-roadmap/` | Folder croutons still resolve through `folderUrls`, so links stay correct. No warning: vanity permalinks (e.g. `/about/`) are common and the trail is already right, so a warning would be noise on ordinary gardens. |
 | Folder whose URL can't be learned at all | That crouton is plain. No warning needed. |
 
 The current page is **never** shown as a crouton.
 
-### 6.5 Warnings
+### 6.5 Errors and warnings
 
+- Croutons warns only about its own failures, never about the content of a garden. No warnings on a vanilla garden, or on any garden that builds correctly.
 - Channel: `[plugins]` build log lines, written with `console.warn("[plugins] croutons: …")` (the loader's own `warn()` is not exported). Never throw; a misbehaving plugin must not break the build. Wrap the filter body so any error yields no trail rather than a failed render.
-- At most one warning per note per build: emit warnings while building the lookup (once per build, 6.2), not per render. No warnings on a vanilla garden.
+- (v0.1 draft behaviour, dropped after the vanilla-garden test on 2026-09-25: one warning per note whose `dg-permalink` isn't under its folder's URL. It fired on ordinary vanity URLs and wasn't actionable.)
 
 ---
 
@@ -209,7 +210,7 @@ The current page is **never** shown as a crouton.
 - [ ] Set `crouton-label: "Meshcore 🛰️"` on the Meshcore README → label appears on every Meshcore child page
 - [ ] Set `homeLabel` to empty → root-level notes render no `<nav>`
 - [ ] Set `separator` to `›` → rendered, still `aria-hidden`
-- [ ] Add a temporary note with a custom `dg-permalink` outside its folder → correct links plus exactly one warning
+- [ ] Add a temporary note with a custom `dg-permalink` outside its folder → correct links and no warning
 - [ ] While `npm run dev` is running, edit an existing folder index note (e.g. set or change its `crouton-label`) → every trail through that folder updates without a restart (cache invalidation). Newly *created* notes are not a valid test here: the dev server's watcher doesn't pick up added files until a restart, independent of Croutons.
 
 **Vanilla garden template (fresh clone, "someone who isn't me"):**

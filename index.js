@@ -64,7 +64,7 @@ function buildLookup(notes) {
 
     const segments = segmentsOf(item.url);
     if (item.data["dg-permalink"] !== undefined) {
-      permalinked.push({ item, folders, segments });
+      permalinked.push({ folders, segments });
     } else if (segments.length === folders.length + 1) {
       // Plain note: its URL mirrors its folders, already slugified.
       recordFolders(folderUrls, folders, segments);
@@ -75,13 +75,6 @@ function buildLookup(notes) {
   // is exactly as deep as its folders. Plain-note evidence already won.
   for (const { folders, segments } of permalinked) {
     if (segments.length === folders.length) recordFolders(folderUrls, folders, segments);
-  }
-
-  for (const { item, folders } of permalinked) {
-    const own = folderUrls.get(folders.join("/"));
-    if (own && !item.url.startsWith(own)) {
-      warn(`"${item.filePathStem}" has dg-permalink ${item.url}, which is not under its folder's URL ${own}`);
-    }
   }
 
   return { pages, folderUrls };
