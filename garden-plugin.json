@@ -3,7 +3,7 @@
   "name": "Croutons",
   "version": "0.1.0",
   "description": "Folder trail under the note title, with folder croutons linking to folder index pages.",
-  "author": "Ian",
+  "author": "Ian Henderson",
   "hooks": "index.js",
   "slots": {
     "notes.header": "templates/trail.njk"

@@ -7,7 +7,7 @@ Inspired by [Breadcrumbs](https://github.com/oleeskild/garden-plugin-breadcrumbs
 - Repo: `garden-plugin-croutons` (standalone, public)
 - Plugin id: `croutons`
 - Licence: MIT (copyright Ian Henderson)
-- Author: Ian
+- Author: Ian Henderson
 
 ---
 
@@ -65,8 +65,8 @@ Keep total code small enough that a cautious user will read it before installing
   "id": "croutons",
   "name": "Croutons",
   "version": "0.1.0",
-  "description": "Folder trail above the title, with folder croutons linking to folder index pages.",
-  "author": "Ian",
+  "description": "Folder trail under the note title, with folder croutons linking to folder index pages.",
+  "author": "Ian Henderson",
   "hooks": "index.js",
   "slots": { "notes.header": "templates/trail.njk" },
   "styles": ["styles/croutons.scss"],
